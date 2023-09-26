@@ -1,3 +1,9 @@
 {
-  "products": []
+  "products": [
+    {
+      "name": "death note",
+      "price": 12.52,
+      "id": 1
+    }
+  ]
 }

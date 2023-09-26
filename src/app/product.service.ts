@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  
+  
   localhost: any;
 
   products : Product[] = [];
@@ -26,6 +28,11 @@ export class ProductService {
     return this.http.post<Product>(this.baseUrl, product);
   }
 
+  update(product: Product) : Observable<Product>{
+    let url = `${this.baseUrl}/${product.id}`;
+    return this.http.post<Product>(url, product);
+  }
+  
   delete(product: Product):Observable<void> {
     let url = `${this.baseUrl}/${product.id}`;
     return this.http.delete<void>(url);

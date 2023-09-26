@@ -6,10 +6,25 @@
   <div class="form-inputs">
     <label for="InputName">Nome</label>
     <input type="name" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Nome do produto" formControlName="name" name="name">
+    
+    <small *ngIf="submited && name.hasError('required')" class="text-danger">
+      *O nome foi requerido
+    </small>
+    <small *ngIf="submited && name.hasError('minlength')" class="text-danger">
+      *O nome tem que ter no mínimo 3 caracteres
+    </small>
   </div>
   <div class="form-inputs">
     <label for="InputValor">Preço</label>
     <input type="number" class="form-control" id="InputValor" placeholder="Preço" formControlName="price" name="price">
+    
+    <small *ngIf="price.hasError('required')" class="text-danger">
+      *O Preço foi requerido
+    </small>
+    <small *ngIf="price.hasError('minlength')" class="text-danger">
+      *O Preço dever ser Maior ou igual a R$ 0,00 
+    </small>
+
   </div>
 
   <button type="save" class="btn btn-success" (click)="save()" style="margin-top: 10px;">Salvar</button>
@@ -26,11 +41,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let p of products">
-      <th scope="row">{{p.id}}</th>
-      <td>{{p.name}}</td>
-      <td>R$ {{p.price}}</td>
-      <td><button class="btn btn-danger" (click)="delete(p)">Remover</button>
-      <button class="btn btn-primary">Editar</button>
+      <th scope="row" class="col-1">{{p.id}}</th>
+      <td class="col-6">{{p.name}}</td>
+      <td class="col-3">{{p.price | currency: 'BRL':'symbol':'1.2-2'}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="delete(p)">Remover</button>
+        <button class="btn btn-primary">Editar</button>
       </td>
     </tr>
   </tbody>

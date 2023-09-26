@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "name": "wendel",
+      "price": "8",
+      "id": 2
+    },
+    {
+      "name": "samili",
+      "price": "8 real",
+      "id": 3
+    },
+    {
+      "name": "eliabe",
+      "price": 6582,
+      "id": 4
+    }
+  ]
+}

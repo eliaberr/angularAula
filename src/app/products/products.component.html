@@ -1,0 +1,37 @@
+<div class="display-6 bg-secondary text-center text-light p-3">
+  Cadastro de Produtos
+</div>
+<form [formGroup]="formGroupProduct">
+
+  <div class="form-inputs">
+    <label for="InputName">Nome</label>
+    <input type="name" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Nome do produto" formControlName="name" name="name">
+  </div>
+  <div class="form-inputs">
+    <label for="InputValor">Preço</label>
+    <input type="number" class="form-control" id="InputValor" placeholder="Preço" formControlName="price" name="price">
+  </div>
+
+  <button type="save" class="btn btn-success" (click)="save()" style="margin-top: 10px;">Salvar</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <th scope="row">{{p.id}}</th>
+      <td>{{p.name}}</td>
+      <td>R$ {{p.price}}</td>
+      <td><button class="btn btn-danger" (click)="delete(p)">Remover</button>
+      <button class="btn btn-primary">Editar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
